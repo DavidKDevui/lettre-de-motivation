@@ -1,0 +1,556 @@
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"> 
+    <head>
+	    <meta charset="utf-8">
+	    <title>Créateur de lettre de motivation</title>
+	    <link rel="stylesheet" href="css/style.css">
+	    <link rel="stylesheet" href="css/annimations.css">
+	    <link rel="icon" type="image/png" href="images/cv.png" />
+	    <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
+	    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+	</head>
+
+<body>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	
+
+
+	<section class="Part"><input type="button" onclick="reinitialize()">
+		<div class="flex-container">
+			<div class="flex-child 1">
+				<img src="images/mainImg.png" id="mainImg" ondragstart="return false;" ondrop="return false;">
+
+				<div class="container" id="container">
+					<form name="form1" class="form1" id="leform">
+						<div class="step step-1 index active">
+							<img src="images/profile.png" alt="img" class="littleImg" ondragstart="return false;" ondrop="return false;">
+							<label class="label-H1">Qui êtes-vous ?</label>
+
+							<div class="horizon">
+								<div class="form-group">
+									<div class="row4">
+										<label><input type="checkbox" id="checkMoiHomme" onchange="choixDuGenreH()" checked/>
+											<div class="icon-box4"><i class="fa fa-heart" aria-hidden="true"></i><span>M.</span></div>
+										</label>
+										<label><input type="checkbox" id="checkMoiFemme" onchange="choixDuGenreF()"/>
+											<div class="icon-box4"><i class="fa fa-heart" aria-hidden="true"></i><span>Mme</span></div>
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="text" id="inputMonPrenom" maxlength="15" placeholder="Prénom" autocomplete="off" onkeypress="return /^[a-zA-Z'’‘’À-ÖØ-öø-ÿ-]*$/i.test(event.key)">
+								</div>
+								<div class="form-group">
+									<input type="text" id="inputMonNom" maxlength="15" placeholder="Nom" autocomplete="off" onkeypress="return /^[a-z'’‘’A-ZÀ-ÖØ-öø-ÿ-\s]*$/i.test(event.key)">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<input type="text" id="inputMonAdresse" placeholder="Adresse" maxlength="45" autocomplete="off" onkeypress="return /^[a-zA-Z'’‘’À-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)">
+							</div>
+
+
+							<div class="horizon2">
+								<div class="form-group">
+									<input id="code" type="tel" placeholder="Code Postal" autocomplete="off" maxlength="5" onkeypress="return isNumberKey(event)">
+								</div>
+
+								<div class="form-group">
+									<input id="ville" type="text" placeholder="Ville" style="width: 100%;" maxlength="5" readonly >
+								</div>
+							</div>			
+
+
+							<div class="horizon3">	
+								<div class="form-group">
+									<input type="text" id="inputMonEmail" maxlength="40"  placeholder="Email" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9_.-@]*$/i.test(event.key)">
+								</div>
+
+								<div class="form-group">
+									<input type="tel" id="inputMonNumero" maxlength="14" autocomplete="off" onkeypress="return isNumberKey(event)" placeholder="Tél.">
+								</div>
+							</div>
+
+							<label class="label-H1" style="margin-top: 20px;">Où postulez-vous ?</label>
+
+							<div class="form-group">
+								<input type="text" id="inputEntrepriseNom" autocomplete="off" maxlength="25" placeholder="Nom de l'entreprise" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@&\s]*$/i.test(event.key)">
+							</div>
+
+
+							<div class="horizon">	
+								<div class="form-group">				
+									<div class="row4">
+										<label><input type="checkbox" id="checkRefHomme" onchange="choixDuGenreH2()" disabled/>
+											<div class="icon-box4"><i class="fa fa-heart" aria-hidden="true"></i><span>M.</span></div>
+										</label>
+										<label><input type="checkbox" id="checkRefFemme" onchange="choixDuGenreF2()" disabled/>
+											<div class="icon-box4"><i class="fa fa-heart" aria-hidden="true"></i><span>Mme</span></div>
+										</label>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<input type="text" id="inputEntrepriseRef" autocomplete="off" maxlength="20" placeholder="Nom d'un référant (optionel)" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’-\s]*$/i.test(event.key)">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<input type="text" id="inputEntrepriseAdresse" maxlength="40" placeholder="Adresse"
+								onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)" autocomplete="off">
+							</div>
+
+							<div class="horizon2">
+								<div class="form-group">
+									<input id="code2" type="tel" placeholder="Code Postal" autocomplete="off" maxlength="5" onkeypress="return isNumberKey(event)">
+								</div>
+
+								<div class="form-group">
+									<input id="ville2" type="text" placeholder="Ville" style="width: 100%;" maxlength="5" readonly >
+								</div>
+							</div>
+
+							<div class="horizon2">	
+								<button type="button" onclick="reappear();" class="prev2-btn">Retour</button>
+								<button type="button" class="next-btn">Valider</button>
+							</div>
+						</div>
+
+						<div class="step step-3">
+							<img src="images/candi.png" alt="img" class="littleImg" ondragstart="return false;" ondrop="return false;">
+							<label class="label-H1">Votre candidature</label>
+
+							<div class="row3" style="margin-top: 15px;">
+								<label><input type="checkbox" id="checkSpontane"/>
+									<div class="icon-box3"><i class="fa fa-heart" aria-hidden="true"></i><span>Candidature spontanée</span></div>
+								</label>
+								<label style="margin-left: 15px;"><input type="checkbox" id="checkToutPoste"/>
+									<div class="icon-box3"><i class="fa fa-music" aria-hidden="true"></i><span>Tout poste</span></div>
+								</label>
+							</div>
+							<div>
+				
+							<div class="horizon6" style="margin-top: 10px;">
+								<div class="form-group">
+									<div class="form-group">
+										<label  id="lblConvoite" class="label-H2" >Vous convoitez le poste de</label>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="form-group">
+										<input type="text" maxlength="30" id="inputPosteConvoite" placeholder="Poste recherché"  autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
+									</div>
+								</div>
+							</div>
+
+							<div class="horizon9">
+								<div class="form-group">
+									<div class="form-group">
+										<label class="label-H2">En contrat</label>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<select name="contrat" id="choixContrat1">
+										<option value="___" class="italique">Sélectionnez un type de contrat</option>
+										<option value="CDI">à durée indeterminée</option>
+										<option value="CDD">à durée determinée</option>
+										<option value="contrat d'apprentissage">d'apprentissage</option>
+										<option value="contrat de professionnalisation">de professionnalisation</option>
+										<option value="contrat saisonnier">saisonnier</option>
+										<option value="stage">de stage</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="horizon2" id="unaMargina">
+								<div class="row" style="margin-top: 6px;">
+									<label><input type="checkbox" id="checkDispoNow"/>
+										<div class="icon-box"><i class="fa fa-imdb" aria-hidden="true"></i><span id="leSpanDispoNow">Disponible <br> dès maintenant</span></div>
+									</label>
+								</div>
+							<div>
+
+							<div class="horizon9">
+								<div class="form-group">
+									<label id="lblApartir1" class="label-H2">À partir du</label>
+								</div>
+								<div class="horizon">
+									<div class="form-group">
+										<select  id="debutJobJour"></select>
+									</div>
+									<div class="form-group">
+										<select id="debutJobMois"></select>
+									</div>
+									<div class="form-group">
+										<select id="debutJobAn"></select>
+									</div>
+								</div>
+							</div>
+
+							<div class="horizon9">
+								<div class="form-group">
+									<label id="lblJusquau1" class="label-H2">durant</label>
+								</div>
+
+								<div class="horizon">
+									<div class="form-group">
+										<select id="choixDureeFormationNb"></select>
+									</div>
+
+									<div class="form-group">
+										<select id="choixDureeFormationMot">
+											<option value="semaine">semaine</option>
+											<option value="mois">mois</option>
+											<option value="an">an</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="horizon2">	
+						<button type="button" class="prev-btn">Retour</button>
+						<button type="button" class="next-btn">Valider</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="step step-4">
+				<img src="images/graduated.png" alt="img"  class="littleImg" ondragstart="return false;" ondrop="return false;">
+				<label class="label-H1">Vos études</label>
+
+				<div class="horizon2">
+					<div class="row2" style="margin-right: 10px;">
+						<label><input type="checkbox" id="checkEnFormation" />
+							<div class="icon-box2"><i class="fa fa-heart2" aria-hidden="true"></i><span id="spanThy">Actuellement <br> en formation</span></div>
+						</label>
+					</div>
+
+					<div style="margin-top: 8px;">
+						<div class="form-group">
+							<select id="choixDiplome">
+								<option value="___" class="italique">Dernier dîplome obtenu</option>
+								<option value="Sans dîplome">Sans dîplome</option>
+								<option value="baccalauréat">Bac Général ou Technologique</option>
+								<option value="baccalauréat professionnel">Bac Pro</option>
+								<option value="CAP">CAP</option>
+								<option value="BTS">BTS</option>
+								<option value="DUT">DUT</option>
+								<option value="licence">Licence</option>
+								<option value="bachelor">Bachelor</option>
+								<option value="master">Master</option>
+								<option value="doctorat">Doctorat</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<input type="text" id="inputNomDiplome" placeholder="Nom du dîplome" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)">
+						</div>
+					</div>
+				</div>
+
+				<label class="label-H1" style="margin-top: 30px;">Votre plus grande expérience professionnelle </label>
+				<label class="label-H3">(en rapport avec le poste convoité)</label>
+
+				<div class="row5">
+					<label><input type="checkbox" id="checkAucuneExperience" onchange="refreshData();" />
+						<div class="icon-box5"><i class="fa fa-heart" aria-hidden="true"></i><span>Aucune expérience</span></div>
+					</label>
+				</div>
+
+
+				<div class="horizon6">
+					<div class="form-group">
+						<div class="form-group">
+							<label id="lblPosteOccupe" class="label-H2">Vous occupiez le poste de</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="form-group">
+							<input type="text" maxlength="30" id="inputPosteOccupe" placeholder="Poste occupé" autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
+						</div>
+					</div>
+				</div>
+
+			<div class="horizon9">
+				<div class="form-group">
+					<div class="form-group">
+						<label id="lblContratOccupe" class="label-H2">En contrat</label></div>
+					</div>
+
+					<div class="form-group">
+						<select name="contrat" id="choixContratOccupe">
+							<option value="___" class="italique">Sélectionnez un type de contrat</option>
+							<option value="CDI">à durée indeterminée</option>
+							<option value="CDD">à durée determinée</option>
+							<option value="contrat d'apprentissage">d'apprentissage</option>
+							<option value="contrat de professionalisation">de professionnalisation</option>
+							<option value="contrat saisonnier">saisonnier</option>
+							<option value="stage">de stage</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="horizon7">
+					<div class="form-group">
+						<div class="form-group">
+							<label id="lblChezEntreprise" class="label-H2">Chez</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="form-group">
+							<input type="text" id="inputChezEntreprise" placeholder="Entreprise" autocomplete="off" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9_.-@'’‘’&\s]*$/i.test(event.key)">
+						</div>
+					</div>
+				</div>
+				
+				<div class="horizon2">	
+					<button type="button" class="prev-btn">Retour</button>
+					<button type="button" class="next-btn">Valider</button>
+				</div>
+			</div>
+	
+			<div class="step step-6">
+				<img src="images/qualities.png" alt="img" class="littleImg" ondragstart="return false;" ondrop="return false;">
+
+				<div class="form-group">
+					<label class="label-H2" style="margin-top: 30px;">Vous vous décririez comme quelqu'un de :</label>
+						<div class="row" style="margin-left: 7px;">
+
+							<label><input type="checkbox" id="checkQualitéMotivation" onchange="tractionSaisie()" />
+          						<div class="icon-box" style="height: 20px;"><i class="fa fa-heart" aria-hidden="true"></i><span id="spanMotive">Motivation</span></div>
+        					</label>
+
+        					<label><input type="checkbox" id="checkQualitéDynamique" onchange="tractionSaisie()"/>
+          						<div class="icon-box" style="height: 20px;"><i class="fa fa-heart" aria-hidden="true"></i><span id="spanDynamique">Dynamique</span></div>
+        					</label>
+
+							<label><input type="checkbox" id="checkQualitéPolyvalence" onchange="tractionSaisie()"/>
+								<div class="icon-box" style="height: 20px;"><i class="fa fa-heart" aria-hidden="true"></i><span id="spanPolyvalent">Polyvalence</span></div>
+							</label>
+						</div>
+
+						<div class="row" style="margin-left: 7px;">
+							<label><input type="checkbox" id="checkQualitéRigeur" onchange="tractionSaisie()"/>
+								<div class="icon-box" style="height: 20px;"><i class="fa fa-heart" aria-hidden="true"></i><span id="spanRigoureux">Rigeur</span></div>
+							</label>
+
+							<label><input type="checkbox" id="checkQualitéSerieux" onchange="tractionSaisie()"/>
+								<div class="icon-box" style="height: 20px;"><i class="fa fa-heart" aria-hidden="true"></i><span id="spanSérieux">Sérieux</span></div>
+							</label>
+
+							<label><input type="checkbox" id="checkQualitéDétermination" onchange="tractionSaisie()"/>
+								<div class="icon-box" style="height: 20px;"><i class="fa fa-heart" aria-hidden="true"></i><span id="spanDéterminé">Détermination</span></div>
+							</label>
+						</div>
+
+						<div class="row" style="margin-left: 7px;">
+							<label><input type="checkbox" id="checkQualitéRelationnel" onchange="tractionSaisie()"/>
+								<div class="icon-box" style="height: 20px;"><i class="fa fa-heart" aria-hidden="true"></i><span id="spanSocial">Sociable</span></div>
+							</label>
+
+							<label><input type="checkbox" id="checkQualitéDiscipline" onchange="tractionSaisie()"/>
+								<div class="icon-box" style="height: 20px;"><i class="fa fa-heart" aria-hidden="true"></i><span id="spanDiscipliné">Discipline</span></div>
+							</label>
+
+							<label><input type="checkbox" id="checkQualitéAutonomnie" onchange="tractionSaisie()"/>
+								<div class="icon-box" style="height: 20px;"><i class="fa fa-heart" aria-hidden="true"></i><span id="spanAutonome">Autonomnie</span></div>
+							</label>
+						</div>
+					</div>
+
+					<div class="horizon47">
+						<div class="form-group">
+							<input type="text" class="label-H2" id="inputShowQly" autocomplete="off" maxlength="5" readonly value="0 / 3" style="width:40px;">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="label-H2" id="competenceslbl">Vous avez acquis la maîtrise :</label>
+					</div>
+
+					<div class="horizon8">	
+						<div class="form-group">
+							<input type="text" id="inputMaitrise1" placeholder="Ex : de logiciels comme Excel" autocomplete="off" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@+&\s]*$/i.test(event.key)">
+						</div>
+						<div class="form-group">
+							<label class="label-ponctu">,</label>
+						</div>
+					</div>
+
+					<div class="horizon8">
+						<div class="form-group">
+							<input type="text" id="inputMaitrise2" placeholder="Ex : de la programmation objet" autocomplete="off" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@+&\s]*$/i.test(event.key)">
+						</div>
+						<div class="form-group">
+							<label class="label-ponctu" name ="competences">, et</label>
+						</div>
+					</div>	
+
+					<div class="horizon8">	
+						<div class="form-group">
+							<input type="text" id="inputMaitrise3" placeholder="Ex : de la tenue de caisse" autocomplete="off" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@+&\s]*$/i.test(event.key)">
+						</div>
+						<div class="form-group">
+							<label class="label-ponctu" name ="competences">.</label>
+						</div>
+					</div>	
+
+					<div class="horizon2">
+						<button type="button" class="prev-btn">Retour</button>
+						<button type="button" class="next-btn">Valider</button>
+					</div>
+				</div>
+
+				<div class="step step-7">
+					<img src="images/cv.png" alt="img" class="littleImg" ondragstart="return false;" ondrop="return false;">
+
+					<div class="form-group" style="margin-top: 20px;">
+						<div class="horizon">
+							<label class="label-H2" id="spaningJePostule" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 1</label>
+							<select name="contrat" id="formulationJePostule" onchange="refreshData();">
+								<option class="italique" value="0">Sélectionnez une formulation</option>
+								<option value="1">Ainsi, je me permets de vous proposer ma candidature.</option>
+								<option value="2">C'est donc avec un grand optimisme que je postule pour intégrer votre entreprise.</option>
+								<option value="3">Je souhaite donc, par la présente, vous soumettre mon profil et vous exprimer toute ma motivation.</option>
+							</select>
+						</div>
+
+						<div class="horizon">
+							<label class="label-H2" id="spaningCapable" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 2</label>
+							<select id="formulationCapable" onchange="refreshData();">
+								<option class="italique" value="0">Sélectionnez une formulation</option>
+								<option value="1"> je n'aurais aucun problème à m'intégrer à votre équipe.</option>
+								<option value="2"> je serais capable de répondre aux imprévus en toute autonomie.</option>
+								<option value="3"> je mettrais un point d'honneur à mener à bien toutes les missions que vous pourrez me confier.</option>
+							</select>
+						</div> 
+
+						<div class="horizon">
+							<label class="label-H2" id="spaningOpportunite" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 3</label>	
+							<select id="formulationOpportunite" onchange="refreshData();">
+								<option class="italique" value="0">Sélectionnez une formulation</option>
+								<option value="1">En effet, cela représente pour moi un réel enjeu d’avenir dans lequel mon travail et ma créativité pourront s’exprimer pleinement. </option>
+								<option value="2">Ce poste représente pour moi une réelle opportunité de développer mes connaissances et d'accroitre mon expérience professionnelle. </option>
+								<option value="3">Cette mission représente, à mes yeux, une réelle opportunité de progression personnelle.</option>
+							</select>
+						</div>
+
+						<div class="horizon">
+							<label class="label-H2" id="spaningAvantFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 4</label>
+							<select id="formulationAvantFin" onchange="refreshData();">
+								<option class="italique" value="0">Sélectionnez une formulation</option>
+								<option value="1">Je vous remercie d'avance pour l'attention que vous porterez à ma candidature. Je me tiens à disposition pour un entretien à votre convenance.</option>
+								<option value="2">Je serais très heureux de vous rencontrer prochainement pour envisager une future coopération.</option>
+								<option value="3">Je me tiens à votre entière disposition pour toute information supplémentaire, ou pour un entretien durant lequel vous vous ferez une idée précise de mon profil.</option>
+							</select>
+						</div>
+
+						<div class="horizon">
+							<label class="label-H2" id="spaningTouteFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 5</label>
+							<select id="formulationTouteFin" onchange="refreshData();">
+								<option class="italique" value="0">Sélectionnez une formulation</option>
+								<option value="1">Veuillez agréer, Madame, Monsieur, l'expression de mes sincères salutations.</option>
+								<option value="2">Je vous prie de croire, Madame, Monsieur, à ma considération distinguée.</option>
+								<option value="3">Dans l’attente d’une réponse que j’espère favorable, je vous prie de recevoir, Madame, Monsieur,l'expression de mes salutations distinguées.</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="horizon2">
+						<button type="button" class="prev-btn">Retour</button>
+						<button type="button" id="downloadBtn" class="download-btn">Télécharger</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="flex-child 3">
+		<div id="letsgo" style="margin : 0 auto;">
+			<h1 style="color: white; font-size: 22px; margin-top: 185px;">Besoin de postuler rapidement ?</h1>
+			<div>
+				<a style="color: white; font-size: 15px;word-wrap: break-word;white-space:pre-line ;">Créez votre lettre de motivation rapidement et gratuitement en remplissant simplement notre formulaire.</a>
+			</div>
+ 			<button class="btn-hover color-11" onclick="diseappear();" style="position: relative; margin-top: 5px; width: 300px;">Let's go !</button>
+
+		</div>
+
+		<div id="container2" class="container2" style="display: none;">
+			<label id="labelMoi"></label>
+			<label id="labelOrganisme"></label>
+			<label id="labelObjet"></label>
+			<label id="labelCorps"></label>
+			<label id="labelSignature"></label>
+		</div>
+
+		<div class="switch" id="divSwitch"><div class="dflex"><div class="switch-div"><input type="checkbox" id="switch"><label for="switch"></label></div></div></div>
+
+	</div>
+</div>
+
+<div id="copyright" style="width: 100%; margin: auto;  margin-top: 139px; ">
+
+<span style="color: white; font-size: 12px; ">Ce site web a été conçu par
+	<span style="color: white; font-size: 12px; cursor: pointer; margin-right: 7px;" onmouseleave="this.style.textDecoration='none'; " onmouseover="this.style.textDecoration='underline'; " onclick="window.location.href = 'mailto:receivealldemand@gmail.com'">David Konate</span>© Tous droits réservés - 2022
+</span>
+
+</div></section>
+
+
+<script type="text/javascript">
+	$("#code").autocomplete({
+		source: function (request, response) {
+			$.ajax({
+				url: "https://api-adresse.data.gouv.fr/search/?postcode="+$("input[id='code']").val(),
+				data: { q: request.term },
+				dataType: "json",
+				success: function (data) {
+					var postcodes = [];
+					response($.map(data.features, function (item) {
+						// Ici on est obligé d'ajouter les CP dans un array pour ne pas avoir plusieurs fois le même
+						if ($.inArray(item.properties.postcode, postcodes) == -1) {
+							postcodes.push(item.properties.postcode);
+							inputMaVille.value = item.properties.city;
+							tractionSaisie();
+						}
+					}));
+				}
+			});
+		},
+	});
+		
+	$("#code2").autocomplete({
+		source: function (request, response) {
+			$.ajax({
+				url: "https://api-adresse.data.gouv.fr/search/?postcode="+$("input[id='code2']").val(),
+				data: { q: request.term },
+				dataType: "json",
+				success: function (data) {
+					var postcodes = [];
+					response($.map(data.features, function (item) {
+						// Ici on est obligé d'ajouter les CP dans un array pour ne pas avoir plusieurs fois le même
+						if ($.inArray(item.properties.postcode, postcodes) == -1) {
+							postcodes.push(item.properties.postcode);
+							inputEntrepriseVille.value = item.properties.city;
+							tractionSaisie();
+						}
+					}));
+				}
+			});
+		},
+	});
+</script>
+
+<script src="https://kendo.cdn.telerik.com/2017.2.621/js/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src= "./script.js"></script>
+		
+</body></html>

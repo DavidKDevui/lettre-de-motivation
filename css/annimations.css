@@ -1,0 +1,125 @@
+
+
+/* Firefox < 16 */
+@-moz-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+
+
+/* Firefox < 16 */
+@-moz-keyframes fenetre {
+    from { height: 100px; opacity: 0;  }
+    to   { height: 480px; opacity: 1;  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fenetre {
+    from { height: 100px; opacity: 0;  }
+    to   { height: 480px; opacity: 1;  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fenetre {
+    from { height: 100px; opacity: 0;  }
+    to   { height: 480px; opacity: 1;  }
+}
+
+
+/* Firefox < 16 */
+@-moz-keyframes fenetre2 {
+    from { height: 480px; opacity: 0;  }
+    to   { height: 0px; opacity: 0;  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fenetre2 {
+    from { height: 480px; opacity: 0;  }
+    to   { height: 0px; opacity: 0;  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fenetre2 {
+    from { height: 480px; opacity: 0;  }
+    to   { height: 0px; opacity: 0;  }
+}
+
+
+/* Firefox < 16 */
+@-moz-keyframes agrandit {
+    from { height: 100px;}
+    to   { height: 550px;}
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes agrandit {
+    from { height: 100px;}
+    to   { height: 550px;}
+}
+
+/* Internet Explorer */
+@-ms-keyframes agrandit {
+    from { height: 100px;}
+    to   { height: 550px;}
+}
+
+
+/* Firefox < 16 */
+@-moz-keyframes raptissi {
+    from { height: 550px; opacity: 1;}
+    to   { height: 0px; opacity: 0;}
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes raptissi {
+    from { height: 550px; opacity: 1;}
+    to   { height: 0px; opacity: 0;}
+}
+
+/* Internet Explorer */
+@-ms-keyframes raptissi {
+    from { height: 550px; opacity: 1;}
+    to   { height: 0px; opacity: 0;}
+}
+
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes flash {
+    10%
+    {
+    opacity: 0;
+    }
+    50%{
+    opacity: 1;
+                }         
+}
