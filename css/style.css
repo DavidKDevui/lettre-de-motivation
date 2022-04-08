@@ -167,7 +167,6 @@ select:disabled{
 form input[type=text], form input[type=tel]{
   font-family: 'Poppins', sans-serif;
   border-radius: 1.5px;
-  outline-width: 0;
   width: 93%;
   font-size: 14px;
   color: white;
@@ -176,6 +175,7 @@ form input[type=text], form input[type=tel]{
 	padding: 2px;
 	border-bottom-width: 1px;
 	margin-top: 3px;
+  
 }
 
 form input[type=text]:disabled, form input[type=tel]:disabled{
@@ -184,7 +184,9 @@ form input[type=text]:disabled, form input[type=tel]:disabled{
 
 form input[type=text]:focus:enabled, form input[type=tel]:focus:enabled{
 	animation: go 0.4s;
-  outline-color: rgb(154, 154, 154);
+  outline-width: 0px;
+  outline-style: solid;
+  outline-color: #641010;
 }
 
 form input[type=text]:hover:enabled, form input[type=tel]:hover:enabled{
@@ -592,7 +594,7 @@ button.prev-btn:active, button.prev2-btn:active{
   position: relative;
 }
 .switch input:checked+label{
-  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 3px 15px rgba(242, 97, 103, .4);
 }
 .switch input:checked+label:after{
   left:calc(100% - 0px);
@@ -608,4 +610,12 @@ button.prev-btn:active, button.prev2-btn:active{
   background-color: #fff;
   border-radius: 90px;
   transition: 0.3s;
+}
+
+
+
+#copyright{
+  width: 100%; 
+  margin: auto;  
+  margin-top: 139px; 
 }

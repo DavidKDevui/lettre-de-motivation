@@ -160,11 +160,10 @@ for (var i = 0; i < 11; i++)
 	arrayYears.push(laDate.getFullYear() + i); 
 
 for(var i = 1; i < 32; i++)
-	debutJobJour.options.add(new Option(i,  i- 1));
+	debutJobJour.options.add(new Option(i,  i - 1 ));
 	
-
 for(var i = 0; i < arrayMonth.length; i++)
-	debutJobMois.options.add(new Option(arrayMonth[i], i));
+	debutJobMois.options.add(new Option(arrayMonth[i], i)); 
 
 for(var i = 0; i < arrayYears.length; i++)
 	debutJobAn.options.add(new Option(arrayYears[i], i));
@@ -940,14 +939,9 @@ function isRefHere(){
 		return utils + inputEntrepriseRef.value + "<br>";	
 }
 
-
-
-
-
 function reinitialize (){
 
 	var x = document.querySelectorAll('input[type="text"]');
-
 		for(i = 0; i < x.length; i++) {
 	    	x[i].value = "";
 		}
@@ -964,10 +958,8 @@ function reinitialize (){
 
 	var x = document.getElementsByTagName("select");
 		for(var i = 0; i < x.length; i++) {
-			x[i].selectedIndex = 0;
+			x[i].selectedIndex = 0; console.log(x[i]);
 		} 
-
-	refreshData();
 }
 
 
@@ -1285,7 +1277,6 @@ function gestionToutPoste(){
 
 function isDispoNow(){
 
-
 	var phraseDurée = " de " + choixDureeFormationNb.value + " " + choixDureeFormationMot.value;
 	var phraseDebut = ", à partir du " + debutJobJour.options[debutJobJour.value].text  +" "+ debutJobMois.options[debutJobMois.value].text +" "+ debutJobAn.options[debutJobAn.value].text;
 
@@ -1296,11 +1287,11 @@ function isDispoNow(){
 		return "";
 
 	else if (checkDispoNow.checked == false && choixContrat1.value == "CDI"){
-	//	return phraseDebut;
+	 	return phraseDebut;
 	}
 
 	else if (checkDispoNow.checked == false && choixContrat1.value != "CDI"){
-		return phraseDurée ;
+		return phraseDurée +  phraseDebut;
 	}
 }
 
@@ -1484,7 +1475,6 @@ function reappear(){
 		document.getElementById("mainImg").style.display='initial';
 		document.getElementById("letsgo").style.animation = "fadein 0.5s forwards";
 		document.getElementById("mainImg").style.animation = "fadein 0.5s forwards";
-		document.getElementById("copyright").style.animation = "fadein 0.5s forwards";
 	}, 500);
 }
 
