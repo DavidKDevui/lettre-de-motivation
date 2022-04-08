@@ -29,7 +29,7 @@
 							<img src="images/profile.png" alt="img" class="littleImg" ondragstart="return false;" ondrop="return false;">
 							<label class="label-H1">Qui êtes-vous ?</label>
 
-							<div class="horizon">
+							<div class="horizon" style="width: 98%;">
 								<div class="form-group">
 									<div class="row4">
 										<label><input type="checkbox" id="checkMoiHomme" onchange="choixDuGenreH()" checked/>
@@ -40,18 +40,19 @@
 										</label>
 									</div>
 								</div>
+								
 								<div class="form-group">
 									<input type="text" id="inputMonPrenom" maxlength="15" placeholder="Prénom" autocomplete="off" onkeypress="return /^[a-zA-Z'’‘’À-ÖØ-öø-ÿ-]*$/i.test(event.key)">
 								</div>
 								<div class="form-group">
-									<input type="text" id="inputMonNom" maxlength="15" placeholder="Nom" autocomplete="off" onkeypress="return /^[a-z'’‘’A-ZÀ-ÖØ-öø-ÿ-\s]*$/i.test(event.key)">
+									<input type="text" id="inputMonNom"  maxlength="15" placeholder="Nom" autocomplete="off" onkeypress="return /^[a-z'’‘’A-ZÀ-ÖØ-öø-ÿ-\s]*$/i.test(event.key)">
 								</div>
 							</div>
-
+		
 							<div class="form-group">
 								<input type="text" id="inputMonAdresse" placeholder="Adresse" maxlength="45" autocomplete="off" onkeypress="return /^[a-zA-Z'’‘’À-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)">
 							</div>
-
+					
 
 							<div class="horizon2">
 								<div class="form-group">
@@ -59,7 +60,7 @@
 								</div>
 
 								<div class="form-group">
-									<input id="ville" type="text" placeholder="Ville" style="width: 100%;" maxlength="5" readonly >
+									<input id="ville" type="text" placeholder="Ville"  maxlength="5" readonly >
 								</div>
 							</div>			
 
@@ -74,14 +75,14 @@
 								</div>
 							</div>
 
-							<label class="label-H1" style="margin-top: 20px;">Où postulez-vous ?</label>
+							<label class="label-H1" style="margin-top: 30px;">Où postulez-vous ?</label>
 
 							<div class="form-group">
 								<input type="text" id="inputEntrepriseNom" autocomplete="off" maxlength="25" placeholder="Nom de l'entreprise" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@&\s]*$/i.test(event.key)">
 							</div>
 
 
-							<div class="horizon">	
+							<div class="horizon4" style="width: 99%;">	
 								<div class="form-group">				
 									<div class="row4">
 										<label><input type="checkbox" id="checkRefHomme" onchange="choixDuGenreH2()" disabled/>
@@ -103,7 +104,7 @@
 								onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)" autocomplete="off">
 							</div>
 
-							<div class="horizon2">
+							<div class="horizon3" style="width: 95%;">
 								<div class="form-group">
 									<input id="code2" type="tel" placeholder="Code Postal" autocomplete="off" maxlength="5" onkeypress="return isNumberKey(event)">
 								</div>
@@ -123,7 +124,7 @@
 							<img src="images/candi.png" alt="img" class="littleImg" ondragstart="return false;" ondrop="return false;">
 							<label class="label-H1">Votre candidature</label>
 
-							<div class="row3" style="margin-top: 15px;">
+							<div class="row3" style="margin-top: 15px; margin-left: 4px;">
 								<label><input type="checkbox" id="checkSpontane"/>
 									<div class="icon-box3"><i class="fa fa-heart" aria-hidden="true"></i><span>Candidature spontanée</span></div>
 								</label>
@@ -136,13 +137,13 @@
 							<div class="horizon6" style="margin-top: 10px;">
 								<div class="form-group">
 									<div class="form-group">
-										<label  id="lblConvoite" class="label-H2" >Vous convoitez le poste de</label>
+										<label style="margin-top: 6px;"  id="lblConvoite" class="label-H2" >Vous convoitez le poste de</label>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<div class="form-group">
-										<input type="text" maxlength="30" id="inputPosteConvoite" placeholder="Poste recherché"  autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
+										<input type="text" maxlength="30" id="inputPosteConvoite" style="width: 217px;" placeholder="Poste recherché"  autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
 									</div>
 								</div>
 							</div>
@@ -150,12 +151,12 @@
 							<div class="horizon9">
 								<div class="form-group">
 									<div class="form-group">
-										<label class="label-H2">En contrat</label>
+										<label style="margin-top: 5.5px;" class="label-H2">En contrat</label>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<select name="contrat" id="choixContrat1">
+									<select name="contrat" style="width: 300px;" id="choixContrat1">
 										<option value="___" class="italique">Sélectionnez un type de contrat</option>
 										<option value="CDI">à durée indeterminée</option>
 										<option value="CDD">à durée determinée</option>
@@ -175,35 +176,35 @@
 								</div>
 							<div>
 
-							<div class="horizon9">
+							<div class="horizon9" style="margin-top: 5px;">
 								<div class="form-group">
 									<label id="lblApartir1" class="label-H2">À partir du</label>
 								</div>
 								<div class="horizon">
 									<div class="form-group">
-										<select  id="debutJobJour"></select>
+										<select style="width: 35px;" id="debutJobJour"></select>
 									</div>
 									<div class="form-group">
-										<select id="debutJobMois"></select>
+										<select style="width: 85px;" id="debutJobMois"></select>
 									</div>
 									<div class="form-group">
-										<select id="debutJobAn"></select>
+										<select style="width: 60px;"  id="debutJobAn"></select>
 									</div>
 								</div>
 							</div>
 
 							<div class="horizon9">
 								<div class="form-group">
-									<label id="lblJusquau1" class="label-H2">durant</label>
+									<label style="margin-left: 27.5px;" id="lblJusquau1" class="label-H2">durant</label>
 								</div>
 
 								<div class="horizon">
 									<div class="form-group">
-										<select id="choixDureeFormationNb"></select>
+										<select style="width: 60px;"  id="choixDureeFormationNb"></select>
 									</div>
 
 									<div class="form-group">
-										<select id="choixDureeFormationMot">
+										<select style="width: 120px;" id="choixDureeFormationMot">
 											<option value="semaine">semaine</option>
 											<option value="mois">mois</option>
 											<option value="an">an</option>
@@ -225,16 +226,16 @@
 				<img src="images/graduated.png" alt="img"  class="littleImg" ondragstart="return false;" ondrop="return false;">
 				<label class="label-H1">Vos études</label>
 
-				<div class="horizon2">
+				<div class="horizon2" >
 					<div class="row2" style="margin-right: 10px;">
 						<label><input type="checkbox" id="checkEnFormation" />
 							<div class="icon-box2"><i class="fa fa-heart2" aria-hidden="true"></i><span id="spanThy">Actuellement <br> en formation</span></div>
 						</label>
 					</div>
 
-					<div style="margin-top: 8px;">
-						<div class="form-group">
-							<select id="choixDiplome">
+					<div style="margin-top: 15px;">
+						<div class="form-group" style="width: 200px;">
+							<select style="margin-left: 7px;" id="choixDiplome">
 								<option value="___" class="italique">Dernier dîplome obtenu</option>
 								<option value="Sans dîplome">Sans dîplome</option>
 								<option value="baccalauréat">Bac Général ou Technologique</option>
@@ -249,7 +250,7 @@
 							</select>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group" style="width: 215px;">
 							<input type="text" id="inputNomDiplome" placeholder="Nom du dîplome" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)">
 						</div>
 					</div>
@@ -265,7 +266,7 @@
 				</div>
 
 
-				<div class="horizon6">
+				<div class="horizon6"  style="margin-top: 10px;">
 					<div class="form-group">
 						<div class="form-group">
 							<label id="lblPosteOccupe" class="label-H2">Vous occupiez le poste de</label>
@@ -274,12 +275,12 @@
 
 					<div class="form-group">
 						<div class="form-group">
-							<input type="text" maxlength="30" id="inputPosteOccupe" placeholder="Poste occupé" autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
+							<input type="text" maxlength="30" id="inputPosteOccupe" style="width: 230px" placeholder="Poste occupé" autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
 						</div>
 					</div>
 				</div>
 
-			<div class="horizon9">
+			<div class="horizon9" style="width: 99%;">
 				<div class="form-group">
 					<div class="form-group">
 						<label id="lblContratOccupe" class="label-H2">En contrat</label></div>
@@ -307,7 +308,7 @@
 
 					<div class="form-group">
 						<div class="form-group">
-							<input type="text" id="inputChezEntreprise" placeholder="Entreprise" autocomplete="off" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9_.-@'’‘’&\s]*$/i.test(event.key)">
+							<input type="text" style="width: 360px;" id="inputChezEntreprise" placeholder="Entreprise" autocomplete="off" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9_.-@'’‘’&\s]*$/i.test(event.key)">
 						</div>
 					</div>
 				</div>
@@ -414,7 +415,7 @@
 
 					<div class="form-group" style="margin-top: 20px;">
 						<div class="horizon">
-							<label class="label-H2" id="spaningJePostule" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 1</label>
+							<label class="label-H2" id="spaningJePostule" onmouseover="setSpanUnderline(true, this);" style="font-size: 20px;" onmouseleave="setSpanUnderline(false, this);">🤚</label>
 							<select name="contrat" id="formulationJePostule" onchange="refreshData();">
 								<option class="italique" value="0">Sélectionnez une formulation</option>
 								<option value="1">Ainsi, je me permets de vous proposer ma candidature.</option>
@@ -424,7 +425,7 @@
 						</div>
 
 						<div class="horizon">
-							<label class="label-H2" id="spaningCapable" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 2</label>
+							<label class="label-H2" id="spaningCapable" onmouseover="setSpanUnderline(true, this);" style="font-size: 20px;" onmouseleave="setSpanUnderline(false, this);">🤚</label>
 							<select id="formulationCapable" onchange="refreshData();">
 								<option class="italique" value="0">Sélectionnez une formulation</option>
 								<option value="1"> je n'aurais aucun problème à m'intégrer à votre équipe.</option>
@@ -434,7 +435,7 @@
 						</div> 
 
 						<div class="horizon">
-							<label class="label-H2" id="spaningOpportunite" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 3</label>	
+							<label class="label-H2" id="spaningOpportunite" onmouseover="setSpanUnderline(true, this);" style="font-size: 20px;" onmouseleave="setSpanUnderline(false, this);">🤚</label>	
 							<select id="formulationOpportunite" onchange="refreshData();">
 								<option class="italique" value="0">Sélectionnez une formulation</option>
 								<option value="1">En effet, cela représente pour moi un réel enjeu d’avenir dans lequel mon travail et ma créativité pourront s’exprimer pleinement. </option>
@@ -444,7 +445,7 @@
 						</div>
 
 						<div class="horizon">
-							<label class="label-H2" id="spaningAvantFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 4</label>
+							<label class="label-H2" id="spaningAvantFin" onmouseover="setSpanUnderline(true, this);" style="font-size: 20px;" onmouseleave="setSpanUnderline(false, this);">🤚</label>
 							<select id="formulationAvantFin" onchange="refreshData();">
 								<option class="italique" value="0">Sélectionnez une formulation</option>
 								<option value="1">Je vous remercie d'avance pour l'attention que vous porterez à ma candidature. Je me tiens à disposition pour un entretien à votre convenance.</option>
@@ -454,7 +455,7 @@
 						</div>
 
 						<div class="horizon">
-							<label class="label-H2" id="spaningTouteFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">Formule 5</label>
+							<label class="label-H2" id="spaningTouteFin" onmouseover="setSpanUnderline(true, this);" style="font-size: 20px;" onmouseleave="setSpanUnderline(false, this);">🤚</label>
 							<select id="formulationTouteFin" onchange="refreshData();">
 								<option class="italique" value="0">Sélectionnez une formulation</option>
 								<option value="1">Veuillez agréer, Madame, Monsieur, l'expression de mes sincères salutations.</option>
@@ -491,8 +492,7 @@
 			<label id="labelSignature"></label>
 		</div>
 
-		<div class="switch" id="divSwitch"><div class="dflex"><div class="switch-div"><input type="checkbox" id="switch"><label for="switch"></label></div></div></div>
-
+		<div class="switch" style="margin-top: 10px;" id="divSwitch"><div class="dflex"><div class="switch-div"><input type="checkbox" id="switch"><label for="switch"></label></div></div></div>
 	</div>
 </div>
 

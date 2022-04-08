@@ -242,8 +242,8 @@ function tractionSaisie(){
 	else {
 		checkRefHomme.removeAttribute("disabled","");
 		checkRefFemme.removeAttribute("disabled","");
-		if (!checkRefHomme.checked && !checkRefFemme.checked)
-			checkRefHomme.checked = true;
+	/*	if (!checkRefHomme.checked && !checkRefFemme.checked)
+			checkRefHomme.checked = true;*/
 	}
 
 	if (inputMonNom.value == "" && inputMonPrenom.value == ""){
@@ -298,7 +298,6 @@ function tractionSaisie(){
 	    inputPosteConvoite.setAttribute("disabled","");
 	    lblConvoite.style.opacity = "15%";}
     else {
-	    inputPosteConvoite.value = ""
 	    inputPosteConvoite.removeAttribute("disabled","");
 	    lblConvoite.style.opacity = "100%";
     }
@@ -381,15 +380,15 @@ function tractionSaisie(){
 	labelCorps.innerHTML = madameMonsieur() + "<br><br>" + 
 
 						   isStudingNow() + "suis "+ itsForTruc() + "à la recherche d'un " + choixContrat1.value +  isDispoNow() + gestionToutPoste() + ". " 
-	                       + '<span style="color: #565858 ;" id="spanJePostule" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' + formulationJePostule.options[formulationJePostule.value].text  + '</span>' 
+	                       + '<span id="spanJePostule" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' + formulationJePostule.options[formulationJePostule.value].text  + '</span>' 
 
-						   + whatDidILearn() + getQuality(1) + ", " + lowerAll(getQuality(2)) +" et " + lowerAll(getQuality(3)) + ',<span style="color: #565858;" id="spanCapable" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);"> ' + formulationCapable.options[formulationCapable.value].text + '</span>' + " Je saurais également mettre mes compétences et mes qualités à profit de votre entreprise." 
+						   + whatDidILearn() + getQuality(1) + ", " + lowerAll(getQuality(2)) +" et " + lowerAll(getQuality(3)) + ',<span id="spanCapable" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);"> ' + formulationCapable.options[formulationCapable.value].text + '</span>' + " Je saurais également mettre mes compétences et mes qualités à profit de votre entreprise." 
 						   
-						   + "<br><br>L'idée d'évoluer dans une entreprise comme " + inputEntrepriseNom.value + " me motive au plus haut point. " + '<span style="color: #565858 ;" id="spanOpportunite" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);" >' + formulationOpportunite.options[formulationOpportunite.value].text  + '</span>'
+						   + "<br><br>L'idée d'évoluer dans une entreprise comme " + inputEntrepriseNom.value + " me motive au plus haut point. " + '<span id="spanOpportunite" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);" >' + formulationOpportunite.options[formulationOpportunite.value].text  + '</span>'
 						   
-						   + dontEntacheVolonté() + "<br><br>" + '<span style="color: #565858 ;" id="spanAvantFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' 
+						   + dontEntacheVolonté() + "<br><br>" + '<span id="spanAvantFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' 
 						   
-						   + formulationAvantFin.options[formulationAvantFin.value].text   + '</span>' + "<br><br>" + '<span style="color: #565858 ;" id="spanTouteFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' 
+						   + formulationAvantFin.options[formulationAvantFin.value].text   + '</span>' + "<br><br>" + '<span id="spanTouteFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' 
 						   
 						   + formulationTouteFin.options[formulationTouteFin.value].text   + '</span>';
 						   
@@ -532,8 +531,8 @@ function changeStep (btn){
 			boolNomEntreprise = true;}
 
 
-		if ((inputEntrepriseRef.value.length <=1 && inputEntrepriseRef.value.length !=0 || inputEntrepriseRef.value.includes("<br>") || inputEntrepriseRef.value.includes("/n")) 
-			|| (inputEntrepriseRef.value.length >1 && checkRefHomme.checked == false && checkRefFemme.checked == false ) && index == 0){
+		if (((inputEntrepriseRef.value.length != 0 && inputEntrepriseRef.value.length < 3) || (inputEntrepriseRef.value.includes("<br>") 
+			|| inputEntrepriseRef.value.includes("/n"))) && index == 0){
 			inputEntrepriseRef.style.borderColor = "#DC143C";
 			boolNomRef = false;}
 		else {
@@ -842,7 +841,6 @@ function isNumberKey(evt){
 
 
 function choixDuGenreH(){
-
 	checkMoiFemme.checked = false;
 	if (!checkMoiHomme.checked){
 		checkMoiHomme.checked = true;}
@@ -850,9 +848,7 @@ function choixDuGenreH(){
 	tractionSaisie();
 }
 
-
 function choixDuGenreF(){
-
 	checkMoiHomme.checked = false;
 	if (!checkMoiFemme.checked){
 		checkMoiFemme.checked = true;}
@@ -862,25 +858,14 @@ function choixDuGenreF(){
 
 
 function choixDuGenreH2(){
-
 	checkRefFemme.checked = false;
-	if (!checkRefHomme.checked){
-		checkRefHomme.checked = true;}
-
-		tractionSaisie();
+	tractionSaisie();
 }
-
 
 function choixDuGenreF2(){
-
 	checkRefHomme.checked = false;
-	if (!checkRefFemme.checked){
-		checkRefFemme.checked = true;}
-
-		tractionSaisie();
+	tractionSaisie();
 }
-
-
 
 
 function refreshData(){
@@ -1591,23 +1576,38 @@ function isFormComplete(){
 
 function setSpanUnderline(theBool, actor){
 
-	if (actor.getAttribute("id").includes("ing"))
-		var ret = actor.getAttribute("id").replace('ing','');
-	else
-		var ret = actor.getAttribute("id").replace('span','spaning');
+	var lacolor;
 
-	if (theBool){
-		actor.style.textDecoration='underline'; 
-		actor.style.textDecoration='underline';
-		document.getElementById(ret).style.textDecoration='underline'; 
-		document.getElementById(ret).style.textDecoration='underline';}
+	if (document.getElementById("switch").checked)
+		lacolor = 'white';
+	else
+		lacolor = 'black';
+
+
+	if (actor.getAttribute("id").includes("ing")){
+		var ret = actor.getAttribute("id").replace('ing','');
+
+		if (theBool){
+			document.getElementById(ret).style.textDecoration='underline'; 
+			document.getElementById(ret).style.color='#eb3941';}
+		else {
+			actor.style.textDecoration='none'; 
+			document.getElementById(ret).style.textDecoration='none';
+			document.getElementById(ret).style.color=lacolor;}
+	}
+
 	else {
-		actor.style.textDecoration='none'; 
-		actor.style.textDecoration='none'; 
-		document.getElementById(ret).style.textDecoration='none'; 
-		document.getElementById(ret).style.textDecoration='none';
+		var ret = actor.getAttribute("id").replace('span','spaning');
+		if (theBool){
+			actor.style.textDecoration='underline'; 
+			actor.style.color='#eb3941';}
+		else {
+			actor.style.textDecoration='none'; 
+			document.getElementById(ret).style.textDecoration='none';
+			actor.style.color=lacolor;}
 	}
 }
+
 
 
 var splitRegex = /\r\n|\r|\n/g;
