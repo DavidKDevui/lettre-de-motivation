@@ -32,10 +32,10 @@
 							<div class="horizon" style="width: 98%;">
 								<div class="form-group">
 									<div class="row4">
-										<label><input type="checkbox" id="checkMoiHomme" onchange="choixDuGenreH()" checked/>
+										<label><input type="checkbox" id="checkMoiHomme" onchange="choixDuGenreH()" disabled/>
 											<div class="icon-box4"><i class="fa fa-heart" aria-hidden="true"></i><span>M.</span></div>
 										</label>
-										<label><input type="checkbox" id="checkMoiFemme" onchange="choixDuGenreF()"/>
+										<label><input type="checkbox" id="checkMoiFemme" onchange="choixDuGenreF()" disabled/>
 											<div class="icon-box4"><i class="fa fa-heart" aria-hidden="true"></i><span>Mme</span></div>
 										</label>
 									</div>
@@ -67,7 +67,7 @@
 
 							<div class="horizon3">	
 								<div class="form-group">
-									<input type="text" id="inputMonEmail" maxlength="40"  placeholder="Email" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9_.-@]*$/i.test(event.key)">
+									<input type="text" id="inputMonEmail" maxlength="40"  placeholder="Email" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ-.@]*$/i.test(event.key)">
 								</div>
 
 								<div class="form-group">
@@ -80,7 +80,6 @@
 							<div class="form-group">
 								<input type="text" id="inputEntrepriseNom" autocomplete="off" maxlength="25" placeholder="Nom de l'entreprise" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@&\s]*$/i.test(event.key)">
 							</div>
-
 
 							<div class="horizon4" style="width: 99%;">	
 								<div class="form-group">				
@@ -95,7 +94,7 @@
 								</div>
 
 								<div class="form-group">
-									<input type="text" id="inputEntrepriseRef" autocomplete="off" maxlength="20" placeholder="Nom d'un référant (optionel)" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’-\s]*$/i.test(event.key)">
+									<input type="text" id="inputEntrepriseRef" autocomplete="off" maxlength="30" placeholder="Nom d'un référant (optionel)" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’-\s]*$/i.test(event.key)">
 								</div>
 							</div>
 
@@ -143,7 +142,7 @@
 
 								<div class="form-group">
 									<div class="form-group">
-										<input type="text" maxlength="30" id="inputPosteConvoite" style="width: 217px;" placeholder="Poste recherché"  autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
+										<input type="text" maxlength="55" id="inputPosteConvoite" style="width: 217px;" placeholder="Poste recherché"  autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
 									</div>
 								</div>
 							</div>
@@ -151,19 +150,19 @@
 							<div class="horizon9">
 								<div class="form-group">
 									<div class="form-group">
-										<label style="margin-top: 5.5px;" class="label-H2">En contrat</label>
+										<label style="margin-top: 5.5px;" class="label-H2">En</label>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<select name="contrat" style="width: 300px;" id="choixContrat1">
 										<option value="___" class="italique">Sélectionnez un type de contrat</option>
-										<option value="CDI">à durée indeterminée</option>
-										<option value="CDD">à durée determinée</option>
-										<option value="contrat d'apprentissage">d'apprentissage</option>
-										<option value="contrat de professionnalisation">de professionnalisation</option>
-										<option value="contrat saisonnier">saisonnier</option>
-										<option value="stage">de stage</option>
+										<option value="CDI">CDI</option>
+										<option value="CDD">CDD</option>
+										<option value="alternance">Alternance</option>
+										<option value="intérim">Intérim</option>
+										<option value="emploi saisonnier">Emploi saisonnier</option>
+										<option value="stage">Stage</option>
 									</select>
 								</div>
 							</div>
@@ -275,7 +274,7 @@
 
 					<div class="form-group">
 						<div class="form-group">
-							<input type="text" maxlength="30" id="inputPosteOccupe" style="width: 230px" placeholder="Poste occupé" autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
+							<input type="text" maxlength="55" id="inputPosteOccupe" style="width: 230px" placeholder="Poste occupé" autocomplete="off" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’\s]*$/i.test(event.key)">
 						</div>
 					</div>
 				</div>
@@ -379,7 +378,7 @@
 
 					<div class="horizon8">	
 						<div class="form-group">
-							<input type="text" id="inputMaitrise1" placeholder="Ex : de logiciels comme Excel" autocomplete="off" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@+&\s]*$/i.test(event.key)">
+							<input type="text" id="inputMaitrise1" placeholder="Ex : de logiciels comme Excel" autocomplete="off" maxlength="60" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@+&\s]*$/i.test(event.key)">
 						</div>
 						<div class="form-group">
 							<label class="label-ponctu">,</label>
@@ -388,7 +387,7 @@
 
 					<div class="horizon8">
 						<div class="form-group">
-							<input type="text" id="inputMaitrise2" placeholder="Ex : de la programmation objet" autocomplete="off" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@+&\s]*$/i.test(event.key)">
+							<input type="text" id="inputMaitrise2" placeholder="Ex : de la programmation objet" autocomplete="off" maxlength="60" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@+&\s]*$/i.test(event.key)">
 						</div>
 						<div class="form-group">
 							<label class="label-ponctu" name ="competences">, et</label>
@@ -397,7 +396,7 @@
 
 					<div class="horizon8">	
 						<div class="form-group">
-							<input type="text" id="inputMaitrise3" placeholder="Ex : de la tenue de caisse" autocomplete="off" maxlength="35" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@+&\s]*$/i.test(event.key)">
+							<input type="text" id="inputMaitrise3" placeholder="Ex : de la tenue de caisse" autocomplete="off" maxlength="60" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@+&\s]*$/i.test(event.key)">
 						</div>
 						<div class="form-group">
 							<label class="label-ponctu" name ="competences">.</label>

@@ -136,7 +136,7 @@ prevBtn.forEach(button=> {
 reinitialize();
 
 
-$('input').on('input',function(e){ refreshData();});
+$('input').on('input',function(e){ tractionSaisie();});
 $("input").on('focus', function() {refreshData();});
 $("input").on('blur', function() {refreshData();});
 $("input[type='checkbox']").on('change',function(e){ refreshData();});
@@ -187,7 +187,6 @@ inputEntrepriseAdresse.value="45 rue fosh";
 inputEntrepriseCodePostal.value="75014";
 inputEntrepriseVille.value="Paris";
 
-inputNomDiplome.value = "SNIR";
 inputNomDiplome.value = "SNIR";
 
 inputMaitrise1.value = "de eezet";
@@ -349,11 +348,17 @@ function tractionSaisie(){
 		
 
 
-	if (index == 2)
-		labelObjet.style.visibility = "visible";
+	if (index >= 2){
+		labelObjet.style.visibility = "visible";}
+	else{
+		labelObjet.style.visibility = "hidden";}
+
 	if (index == 4){	
 		labelCorps.style.visibility = "visible";
 		labelSignature.style.visibility = "visible";}
+	else{
+		labelCorps.style.visibility = "hidden";
+		labelSignature.style.visibility = "hiddenfcd ";}
 
 
 	//Apercu
@@ -384,7 +389,7 @@ function tractionSaisie(){
 
 						   + whatDidILearn() + getQuality(1) + ", " + lowerAll(getQuality(2)) +" et " + lowerAll(getQuality(3)) + ',<span id="spanCapable" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);"> ' + formulationCapable.options[formulationCapable.value].text + '</span>' + " Je saurais également mettre mes compétences et mes qualités à profit de votre entreprise." 
 						   
-						   + "<br><br>L'idée d'évoluer dans une entreprise comme " + inputEntrepriseNom.value + " me motive au plus haut point. " + '<span id="spanOpportunite" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);" >' + formulationOpportunite.options[formulationOpportunite.value].text  + '</span>'
+						   + "<br><br>L'idée d'évoluer " + aNouveau() + "dans une entreprise comme " + inputEntrepriseNom.value + " me motive au plus haut point. " + '<span id="spanOpportunite" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);" >' + formulationOpportunite.options[formulationOpportunite.value].text  + '</span>'
 						   
 						   + dontEntacheVolonté() + "<br><br>" + '<span id="spanAvantFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' 
 						   
@@ -397,18 +402,26 @@ function tractionSaisie(){
 }
 		
 
+function aNouveau(){
+	if(inputEntrepriseNom.value == inputChezEntreprise.value)
+		return "à nouveau ";
+	else
+		return '';
+}
+
+
 function dontEntacheVolonté (){
 	if (checkAucuneExperience.checked == true)
 		return " <br><br>Mon manque d’expérience professionnelle dans ce secteur n’entame en rien ma volonté à occuper ce poste et me pousse, au contraire, à faire mes preuves.";
 	else
 		return "";
 }
-		
+
 
 function whatDidILearn (){
 
 	if (checkAucuneExperience.checked == false && choixDiplome.value != "Sans dîplome" ){
-		return "<br><br>J'ai, au cours de mes études, et de mon " + choixContratOccupe.value + " chez " + getInputChezEntreprise() +  ", en tant que " + getInputPosteOccupe() + ", eu l'occasion d'aquérir des compétences comme la maîtrise " 
+		return "<br><br>J'ai, au cours de mes études, et de mon " + choixContratOccupe.value + " chez " + getInputChezEntreprise() +  ", en tant que " + getInputPosteOccupe() + ", eu l'occasion de solidifier des compétences comme la maîtrise " 
 			+ getMaitrise(1) + ", " + getMaitrise(2) + ", et " + getMaitrise(3) + ". " ;
 	}
 
@@ -899,7 +912,9 @@ function refreshData(){
 
 function madameMonsieur(){
 
-	if (inputEntrepriseRef.value == "") 
+	if (inputEntrepriseRef.value == "")
+		return "<br>Madame, Monsieur,";
+	else if (inputEntrepriseRef.value != "" && checkRefHomme.checked == false &&checkRefFemme.checked == false)
 		return "<br>Madame, Monsieur,";
 	else if (checkRefHomme.checked == true && inputEntrepriseRef.value != "")
 		return "<br>Monsieur " + inputEntrepriseRef.value + ",";
@@ -943,7 +958,7 @@ function reinitialize (){
 
 	var x = document.getElementsByTagName("select");
 		for(var i = 0; i < x.length; i++) {
-			x[i].selectedIndex = 0; console.log(x[i]);
+			x[i].selectedIndex = 0;
 		} 
 }
 
@@ -989,7 +1004,7 @@ function checkNbQualites (){
 
 function correctApostropheLabels(){
 
-	if (inputPosteConvoite.value.charAt(0) == "a" || inputPosteConvoite.value.charAt(0) == "à" || 
+	if (inputPosteConvoite.value.charAt(0) == "a" || inputPosteConvoite.value.charAt(0) == "à" || inputPosteConvoite.value.charAt(0) == "h" ||
 		inputPosteConvoite.value.charAt(0) == "e" || inputPosteConvoite.value.charAt(0) == "é" || inputPosteConvoite.value.charAt(0) == "è" ||
 		inputPosteConvoite.value.charAt(0) == "i" || inputPosteConvoite.value.charAt(0) == "î" || inputPosteConvoite.value.charAt(0) == "ï" ||
 		inputPosteConvoite.value.charAt(0) == "o" || inputPosteConvoite.value.charAt(0) == "ô" || inputPosteConvoite.value.charAt(0) == "ö" ||
@@ -1008,7 +1023,7 @@ function correctApostropheLabels(){
 
 function correctApostropheLabels2(){
 	
-	if (inputPosteOccupe.value.charAt(0) == "a" || inputPosteOccupe.value.charAt(0) == "à" || 
+	if (inputPosteOccupe.value.charAt(0) == "a" || inputPosteOccupe.value.charAt(0) == "à" || inputPosteOccupe.value.charAt(0) == "h" ||
 		inputPosteOccupe.value.charAt(0) == "e" || inputPosteOccupe.value.charAt(0) == "é" || inputPosteOccupe.value.charAt(0) == "è" ||
 		inputPosteOccupe.value.charAt(0) == "i" || inputPosteOccupe.value.charAt(0) == "î" || inputPosteOccupe.value.charAt(0) == "ï" ||
 		inputPosteOccupe.value.charAt(0) == "o" || inputPosteOccupe.value.charAt(0) == "ô" || inputPosteOccupe.value.charAt(0) == "ö" ||
@@ -1375,6 +1390,8 @@ function getInputChezEntreprise(){
 
 	if (inputChezEntreprise.value == "")
 		return "___";
+	else if (inputChezEntreprise.value != "" && inputChezEntreprise.value == inputEntrepriseNom.value)
+		return "vous";
 	else
 		return inputChezEntreprise.value;
 }
