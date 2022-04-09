@@ -139,10 +139,6 @@ $("input[type='checkbox']").on('change',function(e){ refreshData();});
 $("select").on('change',function(e){ refreshData();});
 
 
-document.getElementById("downloadBtn").onclick = function(event) { 
-	try { CreatePDFfromHTML(); tata.text('Téléchargement en cours...', 'lettre_de_motivation.pdf',{ duration: 1800, closeBtn: false});  }
-	catch{ toastr.warning('Erreur lors du téléchargement'); }
-}
 
 labelObjet.style.visibility = "hidden";
 labelCorps.style.visibility = "hidden";
@@ -167,7 +163,7 @@ for(var i = 0; i < arrayYears.length; i++)
 for(var i = 1; i < 12; i++)
 	choixDureeFormationNb.options.add(new Option(i, i));
 
-/*
+
 
 //////////////////////////////////////////////////
 inputMonPrenom.value = "Jean";
@@ -189,7 +185,7 @@ inputMaitrise1.value = "de eezet";
 inputMaitrise2.value = "de eezet";
 inputMaitrise3.value = "de eezet";
 //////////////////////////////////////////////////////
-*/
+
 
 
 function blackMod(mode){
@@ -332,7 +328,14 @@ function tractionSaisie(){
 
 
 	//Gestion BlackMod
-	blackMod(document.getElementById("switch").checked)
+	blackMod(document.getElementById("switch").checked);
+
+	document.getElementById("downloadBtn").onclick = function(event) { 
+		try { CreatePDFfromHTML(); tata.text('Téléchargement en cours...', 'lettre_de_motivation.pdf',{ duration: 1800, closeBtn: false}); }
+		catch{ tata.error('Erreur lors du téléchargement', ''); }
+	}
+
+
 
 
 	//Gestion dernier bouton noir
@@ -1285,7 +1288,7 @@ function isDispoNow(){
 
 	if (choixContrat1.value == "alternance")
 		cont = "d'une alternance "
-	else if (choixContrat1.value == "interim")
+	else if (choixContrat1.value == "intérim")
 		cont = "de missions en intérim "
 	else
 		cont = "d'un " + choixContrat1.value +" ";
