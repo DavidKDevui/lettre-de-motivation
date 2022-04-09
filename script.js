@@ -10,11 +10,6 @@ const arrayYears = [];
 const arrayMonth = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin",
   "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"];
 
-toastr.options = {
-	"closeButton": false, "debug": false, "newestOnTop": true, "progressBar": true, "positionClass": "toast-top-right", "preventDuplicates": false,
-	"showDuration": "15", "hideDuration": "2000", "timeOut": "1150", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
-	"showMethod": "fadeIn","hideMethod": "fadeOut"
-}
 
 //Label PDF
 const labelMoi = document.getElementById('labelMoi');
@@ -50,6 +45,7 @@ const checkRefFemme = document.getElementById('checkRefFemme');
 const checkSpontane = document.getElementById('checkSpontane');
 const checkToutPoste = document.getElementById('checkToutPoste');
 const checkDispoNow = document.getElementById('checkDispoNow');
+const checkTempsPartiel = document.getElementById('checkTempsPartiel');
 
 const inputPosteConvoite = document.getElementById('inputPosteConvoite');
 
@@ -144,7 +140,7 @@ $("select").on('change',function(e){ refreshData();});
 
 
 document.getElementById("downloadBtn").onclick = function(event) { 
-	try { CreatePDFfromHTML(); toastr.success('Téléchargement de lettre_de_motivation.pdf...'); }
+	try { CreatePDFfromHTML(); tata.text('Téléchargement en cours...', 'lettre_de_motivation.pdf',{ duration: 1800, closeBtn: false});  }
 	catch{ toastr.warning('Erreur lors du téléchargement'); }
 }
 
@@ -171,7 +167,7 @@ for(var i = 0; i < arrayYears.length; i++)
 for(var i = 1; i < 12; i++)
 	choixDureeFormationNb.options.add(new Option(i, i));
 
-
+/*
 
 //////////////////////////////////////////////////
 inputMonPrenom.value = "Jean";
@@ -193,7 +189,7 @@ inputMaitrise1.value = "de eezet";
 inputMaitrise2.value = "de eezet";
 inputMaitrise3.value = "de eezet";
 //////////////////////////////////////////////////////
-
+*/
 
 
 function blackMod(mode){
@@ -205,7 +201,6 @@ function blackMod(mode){
 		$(".container2 label").css('color', 'black');
 		$(".container2").css('background-color', 'white');
 	}
-
 }
 
 
@@ -216,7 +211,7 @@ function tractionSaisie(){
 	index = steps.indexOf(active);
 
 	correctApostropheLabels2(); whatGenres();
-	gestionToutPoste(); whatAreQualities(); gestionNbQualities();
+	whatAreQualities(); gestionNbQualities();
 
 
 	//Formatage des input
@@ -346,19 +341,16 @@ function tractionSaisie(){
 	else 
 		document.getElementById("downloadBtn").setAttribute("disabled","");
 		
-
+		labelObjet.style.visibility = "visible";
+		labelCorps.style.visibility = "visible";
+		labelSignature.style.visibility = "visible";
 
 	if (index >= 2){
 		labelObjet.style.visibility = "visible";}
-	else{
-		labelObjet.style.visibility = "hidden";}
 
 	if (index == 4){	
 		labelCorps.style.visibility = "visible";
 		labelSignature.style.visibility = "visible";}
-	else{
-		labelCorps.style.visibility = "hidden";
-		labelSignature.style.visibility = "hiddenfcd ";}
 
 
 	//Apercu
@@ -379,21 +371,21 @@ function tractionSaisie(){
 							   + ", le " + laDate.getDate()+" "+(arrayMonth[laDate.getMonth()])+" "+laDate.getFullYear();
 
 
-	labelObjet.innerHTML = "<br>Objet : Candidature " + isSpontaned();
+	labelObjet.innerHTML = "<br>Objet : " + makeObjet();
 
 
 	labelCorps.innerHTML = madameMonsieur() + "<br><br>" + 
 
-						   isStudingNow() + "suis "+ itsForTruc() + "à la recherche d'un " + choixContrat1.value +  isDispoNow() + gestionToutPoste() + ". " 
-	                       + '<span id="spanJePostule" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' + formulationJePostule.options[formulationJePostule.value].text  + '</span>' 
+						   isStudingNow() + "suis "+ itsForTruc() + "à la recherche " +  isDispoNow() + gestionToutPoste() + ". " 
+	                       + '<span id="spanJePostule" style="cursor: pointer;" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' + formulationJePostule.options[formulationJePostule.value].text  + '</span>' 
 
-						   + whatDidILearn() + getQuality(1) + ", " + lowerAll(getQuality(2)) +" et " + lowerAll(getQuality(3)) + ',<span id="spanCapable" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);"> ' + formulationCapable.options[formulationCapable.value].text + '</span>' + " Je saurais également mettre mes compétences et mes qualités à profit de votre entreprise." 
+						   + whatDidILearn() + getQuality(1) + ", " + lowerAll(getQuality(2)) +" et " + lowerAll(getQuality(3)) + ',<span id="spanCapable" style="cursor: pointer;" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);"> ' + formulationCapable.options[formulationCapable.value].text + '</span>' + " Je saurais également mettre mes compétences et mes qualités à profit de votre entreprise." 
 						   
-						   + "<br><br>L'idée d'évoluer " + aNouveau() + "dans une entreprise comme " + inputEntrepriseNom.value + " me motive au plus haut point. " + '<span id="spanOpportunite" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);" >' + formulationOpportunite.options[formulationOpportunite.value].text  + '</span>'
+						   + "<br><br>L'idée d'évoluer " + aNouveau() + "dans une entreprise comme " + inputEntrepriseNom.value + " me motive au plus haut point. " + '<span id="spanOpportunite" style="cursor: pointer;" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);" >' + formulationOpportunite.options[formulationOpportunite.value].text  + '</span>'
 						   
-						   + dontEntacheVolonté() + "<br><br>" + '<span id="spanAvantFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' 
+						   + dontEntacheVolonté() + "<br><br>" + '<span id="spanAvantFin" style="cursor: pointer;" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' 
 						   
-						   + formulationAvantFin.options[formulationAvantFin.value].text   + '</span>' + "<br><br>" + '<span id="spanTouteFin" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' 
+						   + formulationAvantFin.options[formulationAvantFin.value].text   + '</span>' + "<br><br>" + '<span id="spanTouteFin" style="cursor: pointer;" onmouseover="setSpanUnderline(true, this);" onmouseleave="setSpanUnderline(false, this);">' 
 						   
 						   + formulationTouteFin.options[formulationTouteFin.value].text   + '</span>';
 						   
@@ -637,14 +629,12 @@ function changeStep (btn){
 			boolEntrepriseOccupe = true;}
 
 
-
 		if ((inputShowQly.value != "3 / 3") && index == 3){
 			inputShowQly.style.borderColor = "#DC143C";
 			boolQualites = false;}
 		else {
 			inputShowQly.style.borderColor = "#747474";
 			boolQualites = true;}
-
 
 
 		if ((inputMaitrise1.value.length < 4 || (!inputMaitrise1.value.startsWith("du") && !inputMaitrise1.value.startsWith("de") && !inputMaitrise1.value.startsWith("des")) || inputMaitrise1.value.includes("<br>") || inputMaitrise1.value.includes("/n")) && index == 3){
@@ -1249,18 +1239,32 @@ function shuffle(array) {
 }
 
 
-function isSpontaned(){
+function makeObjet(){
 
-	if (checkSpontane.checked == true && checkToutPoste.checked == false){
-		return "pour un poste "+ correctApostropheLabels() + getPosteConvoite() + " en " + choixContrat1.value;
+	var varObject = "";
+
+	if (checkToutPoste.checked){
+		if (choixContrat1.value == "alternance")
+			varObject = "pour une alternance";
+
+		else if (choixContrat1.value == "intérim")
+			varObject = "à des missions en intérim";
+
+		else
+			varObject = "pour un " + choixContrat1.value;
 	}
-	else if (checkSpontane.checked == false && checkToutPoste.checked == false){
-		return "pour le poste "+ correctApostropheLabels() + getPosteConvoite() + " en " + choixContrat1.value;
+
+	else {
+		if (checkSpontane.checked ){
+			varObject = "pour un poste "+ correctApostropheLabels() + getPosteConvoite() +" en " + choixContrat1.value;;
+		}
+		else if (!checkSpontane.checked){
+			varObject = "au poste "+ correctApostropheLabels() + getPosteConvoite() +" en " + choixContrat1.value;;
+		}
 	}
-	else if (checkToutPoste.checked == true){
-		return "pour un " + choixContrat1.value + "" ;
-	}
+	return "Candidature " + varObject;
 }
+
 
 
 function gestionToutPoste(){
@@ -1277,21 +1281,46 @@ function gestionToutPoste(){
 
 function isDispoNow(){
 
-	var phraseDurée = " de " + choixDureeFormationNb.value + " " + choixDureeFormationMot.value;
-	var phraseDebut = ", à partir du " + debutJobJour.options[debutJobJour.value].text  +" "+ debutJobMois.options[debutJobMois.value].text +" "+ debutJobAn.options[debutJobAn.value].text;
+	var varJour;
+
+	if (choixContrat1.value == "alternance")
+		cont = "d'une alternance "
+	else if (choixContrat1.value == "interim")
+		cont = "de missions en intérim "
+	else
+		cont = "d'un " + choixContrat1.value +" ";
+
+
+	if (debutJobJour.options[debutJobJour.value].text == 1)
+		varJour = "1er";
+	else
+		varJour = debutJobJour.options[debutJobJour.value].text
+
+
+	var tp = "";
+	var phraseDurée = "de " + choixDureeFormationNb.value + " " + choixDureeFormationMot.value;
+	var phraseDebut = ", à partir du " + varJour  +" "+ debutJobMois.options[debutJobMois.value].text +" "+ debutJobAn.options[debutJobAn.value].text;
+
+
+	if (checkTempsPartiel.checked)
+		tp = "à temps partiel ";
+	else
+		tp = "";
+
+
 
 	if (checkDispoNow.checked == true && choixContrat1.value != "CDI")
-		return phraseDurée;
+		return cont + phraseDurée;
 
 	else if (checkDispoNow.checked == true && choixContrat1.value == "CDI")
 		return "";
 
 	else if (checkDispoNow.checked == false && choixContrat1.value == "CDI"){
-	 	return phraseDebut;
+	 	return cont + tp + phraseDebut;
 	}
 
 	else if (checkDispoNow.checked == false && choixContrat1.value != "CDI"){
-		return phraseDurée +  phraseDebut;
+		return cont + tp + phraseDurée +  phraseDebut;
 	}
 }
 
@@ -1549,6 +1578,16 @@ function getAlignRight(str){
 	}
 	return retour + str;
 
+}
+
+
+function checkTKT(myElement){
+	if( document.getElementById(myElement).checked)
+		document.getElementById(myElement).checked = false;
+	else
+		document.getElementById(myElement).checked = true;
+
+	refreshData	();
 }
 
 

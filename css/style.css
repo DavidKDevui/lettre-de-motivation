@@ -10,11 +10,10 @@ html,body { background-color: rgb(46, 46, 46);}
 
 form label{ margin-top: 5.3px; }
 .italique{ font-style: italic; }
-.form-group{ margin-bottom: 1px;}
+.form-group{ margin-bottom: 1px; }
 #leSpanDispoNow{ margin-top: 13px;}
 #lblApartir1,#lblJusquau1 { margin-top: 12px;}
-#unaMargina{ margin-top: 8px;}
-#spanThy{ margin-top: 13px; }
+#spanThy{ margin-top: 6px; }
 
 
 
@@ -145,6 +144,14 @@ form label{ margin-top: 5.3px; }
 }
 
 
+.lesCheckbox{
+
+height: 100%;
+
+}
+
+
+
 
 /* Select*/
 select{
@@ -167,15 +174,17 @@ select:disabled{
 form input[type=text], form input[type=tel]{
   font-family: 'Poppins', sans-serif;
   border-radius: 1.5px;
-  width: 93%;
+  width: 100%;
   font-size: 14px;
   color: white;
   background-color: transparent;
-  border: 0px solid grey;
+  margin: 0 auto;
+  border: 0px solid rgb(94, 94, 94);
 	padding: 2px;
 	border-bottom-width: 1px;
 	margin-top: 3px;
   margin-bottom: 1px;
+  margin-left: 3px;
 }
 
 form input[type=text]:disabled, form input[type=tel]:disabled{
@@ -223,9 +232,9 @@ form input[type=text]:hover:enabled, form input[type=tel]:hover:enabled{
   margin-left: 4px;
   margin-right: 4px;
   color: white;
-  font-size: 12px;
+  font-size: 10px;
   letter-spacing: normal;
-  margin-top: -9px;
+  margin-top: -6px;
 }
 
 .label-ponctu{
@@ -238,7 +247,6 @@ form input[type=text]:hover:enabled, form input[type=tel]:hover:enabled{
   font-size: 13px;
   letter-spacing: normal;
 }
-
 
 
 .horizon{
@@ -285,11 +293,25 @@ form input[type=text]:hover:enabled, form input[type=tel]:hover:enabled{
   width: 100%;
   grid-template-columns: repeat(1, 1fr 15fr);
 }
+.horizon77{
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(1, 1fr 20fr);
+}
+
+
 .horizon8{
   display: grid;
   width: 100%;
   grid-template-columns: repeat(1, 12fr 2fr);
 }
+
+.horizon_7_2{
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(1, 7fr 2fr);
+}
+
 .horizon9{
   display: grid;
   width: 100%;
@@ -301,11 +323,100 @@ form input[type=text]:hover:enabled, form input[type=tel]:hover:enabled{
   grid-template-columns: repeat(1, 1fr 1fr);
 }
 
+
+.horizon_2_3_3{
+  display: grid;
+  width: 95%;
+  margin: 0 auto;
+  grid-template-columns: repeat(1, 2fr 3fr 3fr);
+  justify-content: space-evenly;
+}
+
+.horizon_2_3{
+  display: grid;
+  width: 95%;
+  margin: 0 auto;
+  grid-template-columns: repeat(1, 2fr 3fr);
+  justify-content: space-evenly;
+}
+
+.horizon_3_1{
+  display: grid;
+  width: 95%;
+  margin: 0 auto;
+  grid-template-columns: repeat(1, 3fr 1fr);
+  justify-content: space-evenly;
+}
+
+.horizon_1_1_1_1{
+  display: grid;
+  width: 95%;
+  margin: 0 auto;
+  grid-template-columns: repeat(1, 1fr 1fr 1fr 1fr);
+  justify-content: space-evenly;
+}
+
+
+.horizon_1_2{
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(1, 1fr 2fr);
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+.horizon_2_1{
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(1, 2fr 1fr);
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+.horizon_1{
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(1, 1fr);
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+.horizon_1_3{
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(1, 1fr 3fr);
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+.horizon_1_1{
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(1, 1fr 1fr);
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+.horizon_1_15{
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(1, 1fr 15fr);
+  margin: 0 auto;
+  justify-content: space-evenly;
+} 
+
+.horizon_checkbox{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr 13fr);
+  margin: 0 auto;
+  width: 95%;
+  justify-content: space-evenly;
+} 
+
 .form1{
   opacity: 0;
   background-color: transparent;
 }
-
 
 
 
@@ -395,7 +506,7 @@ button.prev-btn:active, button.prev2-btn:active{
 }
 
 .row label input[type="checkbox"]:checked ~ .icon-box {
-  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);
+  background-image: linear-gradient(to right, #eb3941, #ef5156, #e33c41, #e2373f);
   color: white;
 }
 .row label .icon-box span {
@@ -407,26 +518,26 @@ button.prev-btn:active, button.prev2-btn:active{
 
 .row2 {
   display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
+  width: 95%;
+  grid-template-columns: 1fr;
 }
 .row2 label {
-  padding: 3px;
   cursor: pointer;
   display: flex;
+  text-align: right;
 }
 .row2 label input[type="checkbox"] {
-  display: none;
+
 }
 .row2 label .icon-box2 {
   position: relative;
   display: flex;
-  width: 170px;
+  width: 95%;
   padding: 1px;
-  height: 70px;
+  height: 53px;
   flex-direction: column;
-  align-items: center;
-  background-color:  #353535 ;
+  align-items: right;
+  background-color:  #707070 ;
   color: white;
   border-radius: 3px;
   font-size: 21px;
@@ -434,7 +545,7 @@ button.prev-btn:active, button.prev2-btn:active{
   user-select: none;
 }
 .row2 label input[type="checkbox"]:checked ~ .icon-box2 {
-  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);
+  background-color:  #353535 ;
   color: white;
 }
 
@@ -444,27 +555,29 @@ button.prev-btn:active, button.prev2-btn:active{
 }
 
 .row2 label .icon-box2 span {
-  margin: 2px;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: normal;
 }
 
-
 .row3 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  width: 95%;
+  margin: 0 auto;
+  justify-content: space-evenly;
+  grid-template-columns: 1fr 1fr;
 }
 .row3 label {
   cursor: pointer;
   display: flex;
 }
 .row3 label input[type="checkbox"] {
-  display: none;
+  display: block;
 }
 .row3 label .icon-box3 {
   position: relative;
   display: flex;
-  width: 190px;
+  width: 97.5%;
+  margin: 0 auto;
   height: 29px;
   flex-direction: column;
   align-items: center;
@@ -476,7 +589,7 @@ button.prev-btn:active, button.prev2-btn:active{
   user-select: none;
 }
 .row3 label input[type="checkbox"]:checked ~ .icon-box3 {
-  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);
+  background-image: linear-gradient(to right, #eb3941, #ef5156, #e33c41, #e2373f);
   color: white;
 }
 .row3 label .icon-box3 span {
@@ -517,7 +630,7 @@ button.prev-btn:active, button.prev2-btn:active{
 }
 
 .row4 label input[type="checkbox"]:checked ~ .icon-box4 {
-  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);
+  background-image: linear-gradient(to right, #eb3941, #ef5156, #e33c41, #e2373f);
   color: white;
 }
 .row4 label input[type="checkbox"]:disabled ~ .icon-box4 {
@@ -535,7 +648,7 @@ button.prev-btn:active, button.prev2-btn:active{
 
 .row5 {
   display: grid;
-  width: 97%;
+  width: 95%;
   margin-left: 5px;
   margin-right: 5px;
   grid-template-columns: 1fr;
@@ -561,13 +674,13 @@ button.prev-btn:active, button.prev2-btn:active{
   user-select: none;
 }
 .row5 label input[type="checkbox"]:checked ~ .icon-box5 {
-  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);
+  background-image: linear-gradient(to right, #eb3941, #ef5156, #e33c41, #e2373f);
   color: white;
 }
 .row5 label .icon-box5 span {
   margin: 2px;
   font-size: 12px;
-  margin-top: 4px;
+  margin-top: 24px;
   letter-spacing: normal;
 }
 
