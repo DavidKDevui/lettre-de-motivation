@@ -331,8 +331,8 @@ function tractionSaisie(){
 	blackMod(document.getElementById("switch").checked);
 
 	document.getElementById("downloadBtn").onclick = function(event) { 
-		try { CreatePDFfromHTML(); tata.text('Téléchargement en cours...', 'lettre_de_motivation.pdf',{ duration: 1800, closeBtn: false}); }
-		catch{ tata.error('Erreur lors du téléchargement', ''); }
+		try { CreatePDFfromHTML(); tata.text('Téléchargement en cours...', 'lettre_de_motivation.pdf',{ duration: 1800, closeBtn: false, animate: 'slide'}); }
+		catch{ tata.error('Erreur lors du téléchargement', '',{ duration: 1800, closeBtn: false, animate: 'slide'}); }
 	}
 
 

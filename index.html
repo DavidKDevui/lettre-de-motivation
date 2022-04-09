@@ -9,6 +9,7 @@
 	    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 	</head>
 
+
 <body>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -17,6 +18,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 	<script src="js/tata.js"></script>
 
+
+	<button onclick="tata.text('Téléchargement en cours...', 'lettre_de_motivation.pdf',{ duration: 1800, closeBtn: false});"></button>
 
 	<section class="Part">
 		<div class="flex-container">
@@ -29,7 +32,7 @@
 							<img src="images/profile.png" alt="img" class="littleImg" ondragstart="return false;" ondrop="return false;">
 							<label class="label-H1">Qui êtes-vous ?</label>
 
-							<div class="horizon" style="width: 98%;">
+							<div class="horizon_2_3_3">
 								<div class="form-group">
 									<div class="row4">
 										<label><input type="checkbox" id="checkMoiHomme" onchange="choixDuGenreH()" disabled/>
@@ -44,17 +47,20 @@
 								<div class="form-group">
 									<input type="text" id="inputMonPrenom" maxlength="15" placeholder="Prénom" autocomplete="off" onkeypress="return /^[a-zA-Z'’‘’À-ÖØ-öø-ÿ-]*$/i.test(event.key)">
 								</div>
+
 								<div class="form-group">
 									<input type="text" id="inputMonNom"  maxlength="15" placeholder="Nom" autocomplete="off" onkeypress="return /^[a-z'’‘’A-ZÀ-ÖØ-öø-ÿ-\s]*$/i.test(event.key)">
 								</div>
 							</div>
 		
-							<div class="form-group">
-								<input type="text" id="inputMonAdresse" placeholder="Adresse" maxlength="45" autocomplete="off" onkeypress="return /^[a-zA-Z'’‘’À-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)">
-							</div>
-					
 
-							<div class="horizon2">
+							<div class="horizon_1" >
+								<div class="form-group">
+									<input type="text" id="inputMonAdresse" placeholder="Adresse" maxlength="45" autocomplete="off" onkeypress="return /^[a-zA-Z'’‘’À-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)">
+								</div>
+							</div>
+
+							<div class="horizon_1_2" >
 								<div class="form-group">
 									<input id="code" type="tel" placeholder="Code Postal" autocomplete="off" maxlength="5" onkeypress="return isNumberKey(event)">
 								</div>
@@ -65,7 +71,7 @@
 							</div>			
 
 
-							<div class="horizon3">	
+							<div class="horizon_2_1">	
 								<div class="form-group">
 									<input type="text" id="inputMonEmail" maxlength="40"  placeholder="Email" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ-.@]*$/i.test(event.key)">
 								</div>
@@ -75,13 +81,15 @@
 								</div>
 							</div>
 
-							<label class="label-H1" style="margin-top: 30px;">Où postulez-vous ?</label>
+							<label class="label-H1" style="margin-top: 25px;">Où postulez-vous ?</label>
 
-							<div class="form-group">
-								<input type="text" id="inputEntrepriseNom" autocomplete="off" maxlength="25" placeholder="Nom de l'entreprise" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@&\s]*$/i.test(event.key)">
+							<div class="horizon_1">	
+								<div class="form-group">
+									<input type="text" id="inputEntrepriseNom" autocomplete="off" maxlength="25" placeholder="Nom de l'entreprise" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’_.-@&\s]*$/i.test(event.key)">
+								</div>
 							</div>
 
-							<div class="horizon4" style="width: 99%;">	
+							<div class="horizon_1_3">	
 								<div class="form-group">				
 									<div class="row4">
 										<label><input type="checkbox" id="checkRefHomme" onchange="choixDuGenreH2()" disabled/>
@@ -94,22 +102,24 @@
 								</div>
 
 								<div class="form-group">
-									<input type="text" id="inputEntrepriseRef" autocomplete="off" maxlength="30" placeholder="Nom d'un référant / service (optionel)" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’-\s]*$/i.test(event.key)">
+									<input type="text" id="inputEntrepriseRef" autocomplete="off" maxlength="30" placeholder="Nom d'un référent / service (optionel)" (optionel)" onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ'’‘’-\s]*$/i.test(event.key)">
 								</div>
 							</div>
 
-							<div class="form-group">
-								<input type="text" id="inputEntrepriseAdresse" maxlength="40" placeholder="Adresse"
-								onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)" autocomplete="off">
+							<div class="horizon_1">	
+								<div class="form-group">
+									<input type="text" id="inputEntrepriseAdresse" maxlength="40" placeholder="Adresse"
+									onkeypress="return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9'’‘’-\s]*$/i.test(event.key)" autocomplete="off">
+								</div>
 							</div>
 
-							<div class="horizon3" style="width: 95%;">
+							<div class="horizon_1_2">
 								<div class="form-group">
 									<input id="code2" type="tel" placeholder="Code Postal" autocomplete="off" maxlength="5" onkeypress="return isNumberKey(event)">
 								</div>
 
 								<div class="form-group">
-									<input id="ville2" type="text" placeholder="Ville" style="width: 100%;" maxlength="5" readonly >
+									<input id="ville2" type="text" placeholder="Ville" maxlength="5" readonly >
 								</div>
 							</div>
 
