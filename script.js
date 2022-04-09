@@ -5,7 +5,6 @@ const prevBtn = document.querySelectorAll('form .prev-btn');
 
 const laDate = new Date();
 
-
 const arrayYears = [];
 const arrayMonth = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin",
   "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"];
@@ -187,7 +186,6 @@ inputMaitrise3.value = "de eezet";
 //////////////////////////////////////////////////////
 
 
-
 function blackMod(mode){
 	if (mode){
 		$(".container2 label").css('color', 'white');
@@ -296,11 +294,15 @@ function tractionSaisie(){
 	//Formatage select
 	if (choixDiplome.value == "Sans dîplome"){
 		inputNomDiplome.setAttribute("disabled","");
+		document.getElementById('divCheckForm').style.opacity = "20%";
+		document.getElementById('divCheckForm').style.cursor = "initial";
 		inputNomDiplome.value = "";
 		checkEnFormation.setAttribute("disabled","");
 		checkEnFormation.checked = false;}
 	else {
 		inputNomDiplome.removeAttribute("disabled","");
+		document.getElementById('divCheckForm').style.opacity = "100%";
+		document.getElementById('divCheckForm').style.cursor = "pointer";
 		checkEnFormation.removeAttribute("disabled","");
 	}
 
@@ -343,10 +345,7 @@ function tractionSaisie(){
 		document.getElementById("downloadBtn").removeAttribute("disabled","");
 	else 
 		document.getElementById("downloadBtn").setAttribute("disabled","");
-		
-		labelObjet.style.visibility = "visible";
-		labelCorps.style.visibility = "visible";
-		labelSignature.style.visibility = "visible";
+
 
 	if (index >= 2){
 		labelObjet.style.visibility = "visible";}
@@ -1301,22 +1300,21 @@ function isDispoNow(){
 
 
 	var tp = "";
-	var phraseDurée = "de " + choixDureeFormationNb.value + " " + choixDureeFormationMot.value;
+	var phraseDurée = " de " + choixDureeFormationNb.value + " " + choixDureeFormationMot.value;
 	var phraseDebut = ", à partir du " + varJour  +" "+ debutJobMois.options[debutJobMois.value].text +" "+ debutJobAn.options[debutJobAn.value].text;
 
 
 	if (checkTempsPartiel.checked)
-		tp = "à temps partiel ";
+		tp = "à temps partiel";
 	else
 		tp = "";
 
 
-
 	if (checkDispoNow.checked == true && choixContrat1.value != "CDI")
-		return cont + phraseDurée;
+		return cont + tp + phraseDurée;
 
 	else if (checkDispoNow.checked == true && choixContrat1.value == "CDI")
-		return "";
+		return "d'un CDI " + tp;
 
 	else if (checkDispoNow.checked == false && choixContrat1.value == "CDI"){
 	 	return cont + tp + phraseDebut;
