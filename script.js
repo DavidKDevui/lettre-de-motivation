@@ -110,10 +110,10 @@ var qualité3 = "";
 
 
 const packHomme = ["Motivé", "Dynamique", "Polyvalent", "Rigoureux", "Sérieux", "Déterminé",
-  	"Sociable", "Discipliné", "À l'écoute", "Étudiant", "Dîplomé", "heureux"];
+  	"Sociable", "Discipliné", "À l'écoute", "Étudiant", "Dîplomé", "heureux", "intéressé"];
 
 const packFemme = ["Motivée", "Dynamique", "Polyvalente", "Rigoureuse", "Sérieuse", "Déterminée",
-  	"Sociable", "Disciplinée", "À l'écoute", "Étudiante", "Dîplomée", "heureuse"];
+  	"Sociable", "Disciplinée", "À l'écoute", "Étudiante", "Dîplomée", "heureuse", "intéressée"];
 
 var packQuOnUtilise;
 
@@ -204,15 +204,16 @@ function tractionSaisie(){
 	const active = document.querySelector('form .step.active');
 	index = steps.indexOf(active);
 
-	correctApostropheLabels2(); whatGenres();
-	whatAreQualities(); gestionNbQualities();
-
 
 	//Formatage des input
 	inputMonNumero.value = phoneFormat(inputMonNumero.value);
 	inputMonEmail.value = lowerAll(inputMonEmail.value);
 	inputPosteConvoite.value = inputPosteConvoite.value.toLowerCase();
 	inputPosteOccupe.value = inputPosteOccupe.value.toLowerCase();
+
+	correctApostropheLabels2(); whatGenres();
+	whatAreQualities(); gestionNbQualities();
+
 
 
 	if (inputMonCodePostal.value.length != 5)
@@ -265,7 +266,7 @@ function tractionSaisie(){
   	}
 
 	if(checkEnFormation.checked)
-		document.getElementById('choixDiplome').options[0].text = 'Formation en cours';
+		document.getElementById('choixDiplome').options[0].text = 'Dîplome en préparation';
 	else 
 	    document.getElementById('choixDiplome').options[0].text = 'Dernier dîplome obtenu';	
 
@@ -415,14 +416,14 @@ function dontEntacheVolonté (){
 function whatDidILearn (){
 
 	if (checkAucuneExperience.checked == false && choixDiplome.value != "Sans dîplome" ){
-		return "<br><br>J'ai, au cours de mes études, et de mon " + choixContratOccupe.value + " chez " + getInputChezEntreprise() +  ", en tant que " + getInputPosteOccupe() + ", eu l'occasion de solidifier des compétences comme la maîtrise " 
+		return "<br><br>J'ai, au cours de mes études, et de mon " + choixContratOccupe.value + " chez " + getInputChezEntreprise() +  ", en tant " + correctApostropheLabels3() +" " + getInputPosteOccupe() + ", eu l'occasion de solidifier des compétences comme la maîtrise " 
 			+ getMaitrise(1) + ", " + getMaitrise(2) + ", et " + getMaitrise(3) + ". " ;
 	}
 
 
 	else if (checkAucuneExperience.checked == false && choixDiplome.value == "Sans dîplome" ){
 
-		return "<br><br>J'ai, au cours de mon " + choixContratOccupe.value + " chez " + getInputChezEntreprise() +  ", en tant que " + getInputPosteOccupe() + ", eu l'occasion d'aquérir des compétences comme la maîtrise " 
+		return "<br><br>J'ai, au cours de mon " + choixContratOccupe.value + " chez " + getInputChezEntreprise() +  ", en tant " + correctApostropheLabels3() +" "+ getInputPosteOccupe() + ", eu l'occasion d'aquérir des compétences comme la maîtrise " 
 			+ getMaitrise(1) + ", " + getMaitrise(2) + ", et " + getMaitrise(3) + ". " ;
 	}
 
@@ -433,11 +434,8 @@ function whatDidILearn (){
 		+ getMaitrise(1) + ", " + getMaitrise(2) + ", et " + getMaitrise(3) + ". ";
 	}
 
-
 	else if (checkAucuneExperience.checked == true && choixDiplome.value == "Sans dîplome" ){
-
-	return "<br><br>J'ai eu l'occasion d'aquérir des compétences comme la maîtrise " 
-		+ getMaitrise(1) + ", " + getMaitrise(2) + ", et " + getMaitrise(3) + ". ";
+		return "<br><br>En effet, je suis vivement " + packQuOnUtilise[12] +  " par ce poste qui décrit un profil me correspondant parfaitement. ";
 	}
 }
 
@@ -510,7 +508,7 @@ function changeStep (btn){
 			boolVilleMoi = true;}
 
 
-		if ((inputMonEmail.value.length <=9 || !inputMonEmail.value.includes("@") || inputMonEmail.value.includes("@.")|| inputMonEmail.value.includes("<br>") || inputMonEmail.value.includes("/n") || 
+		if ((inputMonEmail.value.length <=8 || !inputMonEmail.value.includes("@") || inputMonEmail.value.includes("@.")|| inputMonEmail.value.includes("<br>") || inputMonEmail.value.includes("/n") || 
 			(!inputMonEmail.value.endsWith(".com") && !inputMonEmail.value.endsWith(".fr") && !inputMonEmail.value.endsWith(".net"))) && index == 0){
 			inputMonEmail.style.borderColor = "#DC143C";
 			boolEmailMoi = false;}
@@ -573,7 +571,7 @@ function changeStep (btn){
 
 
 
-		if ((inputPosteConvoite.value <= 4 && checkToutPoste.checked == false|| inputPosteConvoite.value.includes("<br>") || inputPosteConvoite.value.includes("/n")) && index == 1){
+		if ((inputPosteConvoite.value <= 1 && checkToutPoste.checked == false|| inputPosteConvoite.value.includes("<br>") || inputPosteConvoite.value.includes("/n")) && index == 1){
 			inputPosteConvoite.style.borderColor = "#DC143C"; 
 			boolPosteConvoite = false;}
 		else {
@@ -607,7 +605,7 @@ function changeStep (btn){
 
 
 
-		if ((inputPosteOccupe.value.length <= 4 && checkAucuneExperience.checked == false || inputPosteOccupe.value.includes("<br>") || inputPosteOccupe.value.includes("/n")) && index == 2){
+		if ((inputPosteOccupe.value.length <= 1 && checkAucuneExperience.checked == false || inputPosteOccupe.value.includes("<br>") || inputPosteOccupe.value.includes("/n")) && index == 2){
 			inputPosteOccupe.style.borderColor = "#DC143C"; 
 			boolPosteOccupe = false;}
 		else {
@@ -623,7 +621,7 @@ function changeStep (btn){
 			boolContratOccupe = true;}
 
 
-		if ((inputChezEntreprise.value.length <= 2  && checkAucuneExperience.checked == false || inputChezEntreprise.value.includes("<br>") || inputChezEntreprise.value.includes("/n")) && index == 2){
+		if ((inputChezEntreprise.value.length <= 1  && checkAucuneExperience.checked == false || inputChezEntreprise.value.includes("<br>") || inputChezEntreprise.value.includes("/n")) && index == 2){
 			inputChezEntreprise.style.borderColor = "#DC143C"; 
 			boolEntrepriseOccupe = false;}
 		else {
@@ -1024,10 +1022,27 @@ function correctApostropheLabels2(){
 
 		lblPosteOccupe.innerHTML = "Vous occupiez le poste d'";
 	}
-
 	else
 		lblPosteOccupe.innerHTML = "Vous occupiez le poste de";
 }
+
+
+function correctApostropheLabels3(){
+	
+	if (inputPosteOccupe.value.charAt(0) == "a" || inputPosteOccupe.value.charAt(0) == "à" || inputPosteOccupe.value.charAt(0) == "h" ||
+		inputPosteOccupe.value.charAt(0) == "e" || inputPosteOccupe.value.charAt(0) == "é" || inputPosteOccupe.value.charAt(0) == "è" ||
+		inputPosteOccupe.value.charAt(0) == "i" || inputPosteOccupe.value.charAt(0) == "î" || inputPosteOccupe.value.charAt(0) == "ï" ||
+		inputPosteOccupe.value.charAt(0) == "o" || inputPosteOccupe.value.charAt(0) == "ô" || inputPosteOccupe.value.charAt(0) == "ö" ||
+		inputPosteOccupe.value.charAt(0) == "u" || inputPosteOccupe.value.charAt(0) == "ù"|| inputPosteOccupe.value.charAt(0) == "œ"||
+		inputPosteOccupe.value.charAt(0) == "y"){
+
+		return "qu'"
+	}
+	else
+		return "que"
+}
+
+
 
 
 function gestionNbQualities(){
@@ -1286,11 +1301,11 @@ function isDispoNow(){
 	var varJour;
 
 	if (choixContrat1.value == "alternance")
-		cont = "d'une alternance "
+		cont = "d'une alternance"
 	else if (choixContrat1.value == "intérim")
-		cont = "de missions en intérim "
+		cont = "de missions en intérim"
 	else
-		cont = "d'un " + choixContrat1.value +" ";
+		cont = "d'un " + choixContrat1.value;
 
 
 	if (debutJobJour.options[debutJobJour.value].text == 1)
@@ -1305,7 +1320,7 @@ function isDispoNow(){
 
 
 	if (checkTempsPartiel.checked)
-		tp = "à temps partiel";
+		tp = " à temps partiel";
 	else
 		tp = "";
 
